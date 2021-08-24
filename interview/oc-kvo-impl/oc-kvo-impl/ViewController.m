@@ -16,10 +16,6 @@
 
 @implementation JQObject
 
-- (void)dealloc {
-    NSLog(@"dealloc");
-}
-
 @end
 
 
@@ -90,18 +86,11 @@ NSString *getMethods(Class cls) {
           "obj1 'setFoo:' 方法地址: %p\n"
           "obj2 'setFoo:' 方法地址: %p\n"
           , obj1Isa, obj2Isa, obj1Methods, obj2Methods, obj1SuperClass, obj2SuperClass, obj1IMP, obj2IMP);
-    SEL sel = NSSelectorFromString(@"_isKVOA");
-    
+
     // 断点 LLDB 打印 obj2IMP:
     // p obj2IMP;
     // (IMP) $0 = 0x00007fff207bf79f (Foundation`_NSSetIntValueAndNotify)
     
-}
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    Class cls = objc_getClass("NSObject");
-    NSString *methods = getMethods(cls);
-    NSLog(@"%@", methods);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
